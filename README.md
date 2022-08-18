@@ -6,6 +6,7 @@ Currenly only dark variant is available.
 
 This theme is hugely based on [Gravity](https://github.com/frankyonnetti/gravity-sublime-theme/).
 
+![Screenshot from 2022-08-19 00-15-38](https://user-images.githubusercontent.com/18751876/185445159-356765fd-a9c6-41cd-aeb9-043800335b63.png)
 
 ## Acknowledgement
 
