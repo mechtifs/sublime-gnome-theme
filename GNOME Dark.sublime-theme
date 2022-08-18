@@ -1,0 +1,984 @@
+{
+    "variables":
+    {
+        "blue_light": "#62a0ea",
+        "blue": "#3584e4",
+        "purple_light": "#c061cb",
+        "purple": "#9141ac",
+        "pink_light": "rgb(228, 93, 156)",
+        "pink": "rgb(191, 69, 117)",
+        "red_light": "#ed333b",
+        "red": "#e01b24",
+        "orange_light": "#ffa348",
+        "orange": "#ff7800",
+        "yellow_light": "#f8e45c",
+        "yellow": "#f6d32d",
+        "green_light": "#57e389",
+        "green": "#33d17a",
+        "gray_light": "rgb(139, 140, 140)",
+        "gray": "rgb(174, 172, 174)"
+    },
+    "rules":
+    [
+        // ============================================================
+        // ! Labels
+        // ============================================================
+
+        {
+            "class": "label_control",
+            "color": "#ffffff",
+            "font.size": 11
+        },
+
+        // ============================================================
+        // ! Side Bar
+        // ============================================================
+
+        {
+            // side bar container
+          "class": "sidebar_container",
+          "content_margin": [0, 0, 1, 0],
+          "layer0.tint": "#4b4b4b",
+          "layer0.opacity": 1
+        },
+        {
+            // side bar tree
+            "class": "sidebar_tree",
+            "indent": 15,
+            "indent_offset": 4,
+            "indent_top_level": true,
+            "row_padding": [8, 6, 8, 5],
+            "layer0.tint": "#1e1e1e",
+            "layer0.opacity": 1
+        },
+        {
+            // side bar - tree row
+            // background label color
+            "class": "tree_row",
+            "layer0.opacity": 0,
+            "layer0.inner_margin": 0
+        },
+        {
+            "class": "tree_row",
+            "attributes": ["selected"],
+            "layer0.inner_margin": [12, 4, 8, 4],
+            "layer0.tint": "#303030",
+            "layer0.texture": "GNOME Dark/assets/sidebar/sidebar_selected_bg.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "tree_row",
+            "attributes": ["hover"],
+            "layer0.inner_margin": [12, 4, 8, 4],
+            "layer0.tint": "#2c2c2c",
+            "layer0.texture": "GNOME Dark/assets/sidebar/sidebar_selected_bg.png",
+            "layer0.opacity": 1
+        },
+        {
+            // side bar heading - e.g. Folders
+            "class": "sidebar_heading",
+            "case": "title",
+            "color": "#ffffff",
+            "font.size": 14,
+            "font.bold": true
+        },
+        {
+            // side bar label
+            "class": "sidebar_label",
+            "font.size": 13,
+            "font.bold": false,
+            "font.italic": false,
+            "color": "#ffffff"
+        },
+        {
+            "class": "sidebar_label",
+            "color": "#ffffff"
+        },
+        {
+            // When preview in enabled.
+            "class": "sidebar_label",
+            "attributes": ["transient"],
+            "font.italic": true
+        },
+        {
+            // side bar - close button
+            "class": "close_button",
+            "content_margin": [8, 6],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#6e6e6e",
+            "layer0.texture": "GNOME Dark/assets/sidebar/sidebar_close_icon.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "close_button",
+            "attributes": ["hover"],
+            "layer0.tint": "#ffffff"
+        },
+        {
+            "class": "close_button",
+            "attributes": ["dirty"],
+            "layer0.texture": "GNOME Dark/assets/sidebar/sidebar_dirty_icon.png",
+            "layer0.opacity": 1,
+            "layer0.tint": "#6e6e6e"
+        },
+        {
+            "class": "close_button",
+            "attributes": ["dirty", "hover"],
+            "layer0.tint": "#ffffff",
+            "layer0.texture": "GNOME Dark/assets/sidebar/sidebar_close_icon.png",
+        },
+        {
+            // buttons - disclosure button control
+            "class": "disclosure_button_control",
+            "content_margin": 8,
+            "layer0.inner_margin": 0,
+            "layer0.texture": "GNOME Dark/assets/arrows/arrow_folder_right.png",
+            "layer0.tint": "#6e6e6e",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": 0,
+            "layer1.texture": "GNOME Dark/assets/arrows/arrow_folder_right.png",
+            "layer1.opacity": 0
+        },
+        {
+            "class": "disclosure_button_control",
+            "parents": [{ "class": "tree_row", "attributes": ["hover"] }],
+            "layer0.opacity": 0,
+            "layer1.opacity": 1
+        },
+        {
+            "class": "disclosure_button_control",
+            "attributes": ["expanded"],
+            "layer0.texture": "GNOME Dark/assets/arrows/arrow_folder_down.png",
+            "layer1.texture": "GNOME Dark/assets/arrows/arrow_folder_down.png"
+        },
+        {
+            // side bar - icon folders
+            "class": "icon_folder",
+            "content_margin": 0,
+        },
+        {
+            // sidebar - icon file type
+            "class": "icon_file_type",
+            "content_margin": 8,
+            // layer0.texture is filled in by code with the relevant icon name
+            "layer0.tint": "#ffffff",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_file_type",
+            "parents": [{"class": "tree_row", "attributes": ["hover"]}],
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_file_type",
+            "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_file_type",
+            "parents": [{"class": "file_system_entry", "attributes": ["ignored"]}],
+            "layer0.opacity": 1
+        },
+
+        // ============================================================
+        // ! Tabs
+        // ============================================================
+
+        // ! Tabs - tabset control
+        {
+            "class": "tabset_control",
+            "content_margin": [-1, 0, -1, 0],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [0, 1],
+            "layer1.texture": "GNOME Dark/assets/tabs/tabset_bg.png",
+            "layer1.tint": "#242424",
+            "layer1.opacity": 1,
+            "tab_overlap": 1,
+            "tab_width": 4194304,
+            "tab_min_width": 160,
+            "tab_height": 36,
+            "mouse_wheel_switch": false
+        },
+
+        // ! Tabs - tab control
+        {
+            "class": "tab_control",
+            "content_margin": [16, 0, 10, 0],
+            "max_margin_trim": 0,
+            "hit_test_level": 0,
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [4, 2],
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/tabs/tab_inactive.png",
+            "layer1.opacity": 1,
+            "layer2.opacity": 0
+        },
+        {
+            // tab active label margin
+            "class": "tab_control",
+            "attributes": ["selected"],
+            "layer0.tint": "#4b4b4b",
+            "layer1.opacity": 0,
+            "layer2.inner_margin": [4, 2],
+            "layer2.texture": "GNOME Dark/assets/tabs/tab_active.png",
+            "layer2.opacity": 1
+        },
+        {
+            // tab hover
+            "class": "tab_control",
+            "attributes": ["hover"],
+            "layer1.tint": "#2c2c2c",
+            "layer1.opacity": 1
+        },
+        {
+            // tabs - tab label
+            "class": "tab_label",
+            "fade": false,
+            "font.bold": false,
+            "font.size": 14,
+            "fg": "#ffffff"
+        },
+        {
+            "class": "tab_label",
+            "attributes": ["transient"],
+            "font.italic": true
+        },
+        {
+            // tabs - tab close button
+            "class": "tab_close_button",
+            "content_margin": [10, 10, 10, 10],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#545454",
+            "layer0.texture": "GNOME Dark/assets/tabs/tab_close_icon_bg.png",
+            "layer0.opacity": 0,
+            "layer1.tint": "#6e6e6e",
+            "layer1.texture": "GNOME Dark/assets/tabs/tab_close_icon.png",
+            "layer1.opacity": 1
+        },
+        {
+            // tab close button hover
+            "class": "tab_close_button",
+            "attributes": ["hover"],
+            "layer0.opacity": 1,
+            "layer1.tint": "#ffffff"
+        },
+        {
+            // tab dirty button
+            "class": "tab_close_button",
+            "parents": [{"class": "tab_control", "attributes": ["dirty"]}],
+            "layer1.tint": "#6e6e6e",
+            "layer1.texture": "GNOME Dark/assets/tabs/tab_dirty_icon.png",
+            "layer1.opacity": 1
+        },
+        {
+            // tab dirty button hover
+            "class": "tab_close_button",
+            "parents": [{"class": "tab_control", "attributes": ["dirty"]}],
+            "attributes": ["hover"],
+            "layer0.tint": "#545454",
+            "layer0.opacity": 1,
+            "layer1.tint": "#ffffff",
+            "layer1.texture": "GNOME Dark/assets/tabs/tab_close_icon.png",
+        },
+        {
+            // new tab button
+            "class": "new_tab_button",
+            "content_margin": 0
+        },
+        {
+            // tabs - set scroll left / scroll right
+            "class": "scroll_tabs_left_button",
+            "content_margin": 0
+        },
+        {
+            "class": "scroll_tabs_right_button",
+            "content_margin": 0
+        },
+        {
+            "class": "show_tabs_dropdown_button",
+            "content_margin": 0
+        },
+
+        // ============================================================
+        // ! Quick Panel
+        // ============================================================
+
+        {
+            "class": "overlay_control",
+            "content_margin": [24, 35, 24, 24],
+            "layer0.inner_margin": [29, 35, 29, 29],
+            "layer0.tint": [0, 0, 0],
+            "layer0.texture": "GNOME Dark/assets/panels/overlay_shadow.png",
+            "layer0.opacity": 0.15,
+            "layer1.inner_margin": [29, 35, 29, 29],
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/panels/overlay_border.png",
+            "layer1.opacity": 0.3,
+            "layer2.inner_margin": [29, 35, 29, 29],
+            "layer2.tint": "#242424",
+            "layer2.texture": "GNOME Dark/assets/panels/overlay_bg.png",
+            "layer2.opacity": 1
+        },
+        {
+            // quick panel
+            "class": "quick_panel",
+            "row_padding": [18, 10]
+        },
+        {
+            "class": "quick_panel",
+            "parents": [{"class": "switch_project_window"}],
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1
+        },
+        {
+            // quick panel row
+            "class": "quick_panel_row",
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": 6,
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/panels/control_overlay_selected.png",
+            "layer1.opacity": 0
+        },
+        {
+            "class": "quick_panel_row",
+            "attributes": ["selected"],
+            "layer0.opacity": 0,
+            "layer1.tint": "#393939", // highlight
+            "layer1.opacity": 1
+        },
+        {
+            "class": "quick_panel_row",
+            "parents": [{"class": "switch_project_window"}],
+            "layer0.tint": "#303030",
+            "layer0.opacity": 1,
+            "layer1.tint": "#303030",
+            "layer1.opacity": 0
+        },
+        {
+            "class": "quick_panel_row",
+            "parents": [{"class": "switch_project_window"}],
+            "attributes": ["selected"],
+            "layer0.tint": "#393939", // highlight
+            "layer0.opacity": 1,
+            "layer1.tint": "#393939", // highlight
+            "layer1.opacity": 1
+        },
+        {
+            // quick panel - label (text)
+            "class": "quick_panel_label",
+            "fg": [150, 150, 150],
+            "match_fg": "var(blue_light)", // highlight
+            "selected_fg": [255, 255, 255],
+            "selected_match_fg": "var(blue_light)" // color change while typing
+        },
+        {
+            // quick panel - path label (text)
+            "class": "quick_panel_path_label",
+            "fg": [96, 96, 96],
+            "match_fg": [96, 96, 96],
+            "selected_fg": [150, 150, 150],
+            "selected_match_fg": [255, 255, 255]
+        },
+        {
+            "class": "quick_panel_detail_label",
+            "link_color": [104, 104, 104]
+        },
+
+        // ! Quick Panel - mini quick panel
+        {
+            "class": "mini_quick_panel_row",
+            "layer0.inner_margin": 6,
+            "layer0.tint": "#242424",
+            "layer0.texture": "GNOME Dark/assets/panels/control_overlay_selected.png",
+            "layer0.opacity": 0
+        },
+        {
+            "class": "mini_quick_panel_row",
+            "attributes": ["selected"],
+            "layer0.tint": "#393939", // highlight
+            "layer0.opacity": 1
+        },
+
+        // ============================================================
+        // ! Views
+        // ============================================================
+
+        // ! Views - grid layout control
+        {
+            "class": "grid_layout_control",
+            "border_size": 1,
+            "border_color": "#4b4b4b"
+        },
+
+        // ! Views - minimap control
+        {
+            "class": "minimap_control",
+            "viewport_color": [255, 255, 255, 0.1]
+        },
+        {
+            "class": "minimap_control",
+            "attributes": ["hover"],
+            "viewport_color": [255, 255, 255, 0.35]
+        },
+
+        // ! Views - Fold button control
+        {
+            "class": "fold_button_control",
+            "content_margin": 8,
+            "layer0.inner_margin": 0,
+            "layer0.texture": "GNOME Dark/assets/arrows/arrow_fold_code_right.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "fold_button_control",
+            "attributes": ["expanded"],
+            "layer0.texture": "GNOME Dark/assets/arrows/arrow_fold_code_down.png"
+        },
+
+        // ! Views - popup control
+        {
+            // contextual menu and tooltips
+            "class": "popup_control",
+            "content_margin": 1,
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1
+        },
+
+        // ! Views - auto complete
+        {
+            "class": "auto_complete",
+            "row_padding": [5, 5, 5, 3],
+            "layer0.tint": "#242424",
+            "layer0.opacity": 0
+        },
+        {
+            "class": "auto_complete_label",
+            "font.size": 11,
+            // unselected text color
+            "fg": "#ffffff",
+            "match_fg": "#ffffff",
+            "bg": "#1e1e1e",
+            // selected text color
+            "selected_fg": "#ffffff",
+            "selected_match_fg": "#ffffff",
+            "selected_bg": "#393939",
+        },
+        {
+            // views - autocomplete table rows
+            "class": "table_row",
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#242424",
+            "layer0.opacity": 0
+        },
+        {
+            "class": "table_row",
+            "attributes": ["selected"],
+            "layer0.tint": "#393939", // highlight
+            "layer0.opacity": 1
+        },
+
+        // ============================================================
+        // ! Panels - find panel & switch project window
+        // ============================================================
+
+        {
+            "class": "panel_control",
+            "content_margin": [5, 8, 10, 7],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [0, 1, 0, 0],
+            "layer1.tint": "#1e1e1e",
+            "layer1.texture": "GNOME Dark/assets/panels/status_bar.png",
+            "layer1.opacity": 1
+        },
+        {
+            "class": "panel_control",
+            "parents": [{"class": "switch_project_window"}],
+            "layer1.tint": "#393939",
+            "layer1.opacity": 1
+        },
+        {
+            // panel close button
+            "class": "panel_close_button",
+            "content_margin": [8, 6],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#6e6e6e",
+            "layer0.texture": "GNOME Dark/assets/panels/panel_close_icon.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "panel_close_button",
+            "attributes": ["hover"],
+            "layer0.tint": "#ffffff"
+        },
+
+        // ============================================================
+        // ! Status Bar
+        // ============================================================
+
+        {
+            "class": "status_bar",
+            "content_margin": [14, 0, 4, 0],
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [0, 1, 0, 0],
+            "layer1.tint": "#1e1e1e",
+            "layer1.texture": "GNOME Dark/assets/panels/status_bar.png",
+            "layer1.opacity": 1
+        },
+        {
+            // search panel - panel button control
+            "class": "panel_button_control",
+            "content_margin": [8, 16],
+            "layer0.tint": "#ffffff",
+            "layer0.texture": "GNOME Dark/assets/button_icons/panels.png"
+        },
+        {
+            // search panel - sidebar button control
+            "class": "sidebar_button_control",
+            "content_margin": [8, 16],
+            "layer0.tint": "#ffffff",
+            "layer0.texture": "GNOME Dark/assets/button_icons/sidebar.png"
+        },
+        {
+            "class": "label_control",
+            "parents": [{"class": "status_bar"}],
+            "color": "#ffffff",
+            "font.size": 13
+        },
+        {
+            // status container
+            "class": "status_container",
+            "content_margin": [10, 0, 0, 0]
+        },
+        {
+            // status button
+            "class": "status_button",
+            "content_margin": [10, 2, 10, 3],
+            "min_size": [75, 0],
+            "layer0.inner_margin": [1, 0, 0, 0],
+            "layer0.tint": "#ffffff",
+            "layer0.opacity": 0,
+            "layer0.draw_center": false
+        },
+
+        // ============================================================
+        // ! Dialog
+        // ============================================================
+
+        {
+            "class": "dialog",
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1
+        },
+
+        {
+            // dialog - progress bar
+            "class": "progress_bar_control",
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1
+        },
+        {
+            // dialog - progress gauge control
+            "class": "progress_gauge_control",
+            "content_margin": [0, 6],
+            "layer0.tint": [43, 102, 201],
+            "layer0.opacity": 1
+        },
+
+        // ============================================================
+        // ! Scroll Bar
+        // ============================================================
+
+        {
+            // scroll bar control
+            "class": "scroll_bar_control",
+            "content_margin": 0,
+            "layer0.tint": "#242424",
+            "layer0.opacity": 1
+        },
+        {
+            // scroll bar control - OVERLAY_CONTROL
+            "class": "scroll_bar_control",
+            "parents": [{"class": "overlay_control"}],
+            "layer0.tint": "#242424",
+            "layer0.opacity": 0
+        },
+        {
+            // scroll bar control - AUTO_COMPLETE
+            "class": "scroll_bar_control",
+            "parents": [{"class": "popup_control"}],
+            "layer0.tint": "#242424",
+            "layer0.opacity": 0
+        },
+        {
+            // scroll bar control - horizontal
+            "class": "scroll_bar_control",
+            "attributes": ["horizontal"],
+            "content_margin": 0
+        },
+        {
+            // scroll track control - vertical
+            "class": "scroll_track_control",
+            "content_margin": 0,
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [1, 0, 0, 0],
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/scroll_bar/scroll_bar_bg_vertical.png",
+            "layer1.opacity": 1
+        },
+        {
+            // scroll track control - OVERLAY_CONTROL
+            "class": "scroll_track_control",
+            "parents": [{"class": "overlay_control"}],
+            "layer0.opacity": 0,
+            "layer1.inner_margin": 0,
+            "layer1.opacity": 0,
+            "layer2.inner_margin": [0, 8],
+            "layer2.tint": "#242424",
+            "layer2.texture": "GNOME Dark/assets/scroll_bar/scroll_thumb_vertical_bg.png",
+            "layer2.opacity": 1
+        },
+        {
+            // scroll track control - SWITCH_PROJECT_WINDOW
+            "class": "scroll_track_control",
+            "parents": [{"class": "switch_project_window"}],
+            "layer0.opacity": 0,
+            "layer1.opacity": 0,
+            "layer2.inner_margin": [0, 8],
+            "layer2.tint": "#242424",
+            "layer2.texture": "GNOME Dark/assets/scroll_bar/scroll_thumb_vertical_bg.png",
+            "layer2.opacity": 1
+        },
+        {
+            // scroll track control - AUTO_COMPLETE
+            "class": "scroll_track_control",
+            "parents": [{"class": "popup_control"}],
+            "layer0.opacity": 0,
+            "layer1.opacity": 0,
+            "layer2.inner_margin": [0, 8],
+            "layer2.tint": "#242424",
+            "layer2.texture": "GNOME Dark/assets/scroll_bar/scroll_thumb_vertical_bg.png",
+            "layer2.opacity": 1
+        },
+        {
+            // scroll track control - horizontal
+            "class": "scroll_track_control",
+            "attributes": ["horizontal"],
+            "layer1.inner_margin": [0, 1, 0, 0],
+            "layer1.texture": "GNOME Dark/assets/scroll_bar/scroll_bar_bg_horizontal.png"
+        },
+        {
+            // scroll corner control
+            "class": "scroll_corner_control",
+            "content_margin": 0,
+            "layer0.inner_margin": 0,
+            "layer0.tint": "#4b4b4b",
+            "layer0.opacity": 1,
+            "layer1.inner_margin": [1, 1, 0, 0],
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/scroll_bar/scroll_bar_bg_corner.png",
+            "layer1.opacity": 1
+        },
+        {
+            // puck control - thumb vertical
+            "class": "puck_control",
+            "content_margin": [8, 12],
+            "layer0.inner_margin": [0, 8],
+            "layer0.tint": "#787878",
+            "layer0.texture": "GNOME Dark/assets/scroll_bar/scroll_thumb_vertical.png",
+            "layer0.opacity": 1
+        },
+        {
+            // puck control - thumb horizontal
+            "class": "puck_control",
+            "attributes": ["horizontal"],
+            "content_margin": [12, 8],
+            "layer0.inner_margin": [8, 0],
+            "layer0.texture": "GNOME Dark/assets/scroll_bar/scroll_thumb_horizontal.png"
+        },
+        {
+            "class": "puck_control",
+            "parents": [{"class": "overlay_control"}],
+            "layer0.inner_margin": [0, 6]
+        },
+
+        // ============================================================
+        // ! Inputs
+        // ============================================================
+
+        {
+            // inputs - text line control
+            "class": "text_line_control",
+            "content_margin": [4, 7, 15, 3],
+            "layer0.inner_margin": 6,
+            "layer0.tint": "#242424",
+            "layer0.texture": "GNOME Dark/assets/panels/input_shadow.png",
+            "layer0.opacity": 0.5,
+            "layer1.inner_margin": 6,
+            "layer1.tint": "#242424",
+            "layer1.texture": "GNOME Dark/assets/panels/input.png",
+            "layer1.opacity": 1,
+        },
+        {
+            "class": "text_line_control",
+            "parents": [{"class": "overlay_control"}],
+            "content_margin": [18, 14],
+            "layer0.opacity": 0
+        },
+        {
+            "class": "text_line_control",
+            "parents": [{"class": "panel_control"}],
+            "content_margin": [4, 6, 5, 4]
+        },
+        {
+            "class": "text_line_control",
+            "parents": [{"class": "switch_project_window"}],
+            "layer0.opacity": 0
+        },
+        {
+            // inputs - dropdown button control
+            "class": "dropdown_button_control",
+            "content_margin": [8, 9],
+            "layer0.inner_margin": [4, 4],
+            "layer0.texture": "GNOME Dark/assets/arrows/dropdown_arrow.png",
+            "layer0.opacity": 0.5
+        },
+
+        // ============================================================
+        // ! Buttons
+        // ============================================================
+
+        {
+            // button control
+            "class": "button_control",
+            "min_size": [70, 0],
+            "content_margin": [6, 8, 6, 9],
+            "layer0.inner_margin": 6,
+            "layer0.tint": "#444444",
+            "layer0.texture": "GNOME Dark/assets/buttons/button_full_shadow.png",
+            "layer0.opacity": 0,
+            "layer1.inner_margin": 6,
+            "layer1.tint": "#444444",
+            "layer1.texture": "GNOME Dark/assets/buttons/button_full.png",
+            "layer1.opacity": 1
+        },
+        {
+            "class": "button_control",
+            "attributes": ["pressed"],
+            "layer0.opacity": 1,
+            "layer1.opacity": 1
+        },
+        {
+            // icon button control - small find icon buttons
+            // middle button
+            "class": "icon_button_control",
+            "content_margin": [8, 7, 8, 9],
+            "layer0.inner_margin": 6,
+            "layer0.tint": "#444444",
+            "layer0.opacity": 0,
+            "layer1.tint": "#444444",
+            "layer1.opacity": 0
+        },
+        {
+            "class": "icon_button_control",
+            "attributes": ["selected"],
+            "layer0.opacity": 1
+        },
+        {
+            // left button
+            "class": "icon_button_control",
+            "attributes": ["left"],
+            "layer0.texture": "GNOME Dark/assets/buttons/button_left_shadow.png",
+            "layer1.texture": "GNOME Dark/assets/buttons/button_left.png",
+        },
+        {
+            // left button hover
+            "class": "icon_button_control",
+            "attributes": ["left", "hover"],
+            "layer0.opacity": 1,
+        },
+        {
+            // middle button hover
+            "class": "icon_button_control",
+            "attributes": ["middle", "hover"],
+            "layer0.opacity": 1,
+        },
+        {
+            // right button
+            "class": "icon_button_control",
+            "attributes": ["right"],
+            "layer0.texture": "GNOME Dark/assets/buttons/button_right_shadow.png",
+            "layer1.texture": "GNOME Dark/assets/buttons/button_right.png"
+        },
+        {
+            // right button hover
+            "class": "icon_button_control",
+            "attributes": ["right", "hover"],
+            "layer0.opacity": 1,
+        },
+        {
+            // mini button
+            "class": "icon_button_control",
+            "attributes": ["left", "right"],
+            "layer0.texture": "GNOME Dark/assets/buttons/button_mini_shadow.png",
+            "layer1.texture": "GNOME Dark/assets/buttons/button_mini.png"
+        },
+        {
+            // mini button
+            "class": "icon_button_control",
+            "attributes": ["left", "right", "hover"],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon regex
+            "class": "icon_regex",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_regex.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_regex",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon case
+            "class": "icon_case",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_case.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_case",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons- icon whole word
+            "class": "icon_whole_word",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_wholeword.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_whole_word",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon wrap
+            "class": "icon_wrap",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_wrap.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_wrap",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon in selection
+            "class": "icon_in_selection",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_inselection.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_in_selection",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon highlight
+            "class": "icon_highlight",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_highlight.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_highlight",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon preserve case
+            "class": "icon_preserve_case",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_preserve_case.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_preserve_case",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon context
+            "class": "icon_context",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_context.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_context",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon use buffer
+            "class": "icon_use_buffer",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_usebuffer.png",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_use_buffer",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+        {
+            // buttons - icon gitignore
+            "class": "icon_use_gitignore",
+            "content_margin": 8,
+            "layer0.texture": "GNOME Dark/assets/button_icons/find_gitignore.png",
+            "layer0.tint": "#ffffff",
+            "layer0.opacity": 1
+        },
+        {
+            "class": "icon_use_gitignore",
+            "parents": [{"class": "icon_button_control", "attributes": ["selected"]}],
+            "layer0.opacity": 1
+        },
+
+        // ============================================================
+        // ! Tooltip
+        // ============================================================
+
+        {
+            "class": "tool_tip_control",
+            "content_margin": [14, 7],
+            "layer0.tint": "#000000",
+            "layer0.inner_margin": 0,
+            "layer0.opacity": 1
+        },
+        {
+            // tool tip label control
+            "class": "tool_tip_label_control",
+            "color": "#ffffff",
+            "font.size": 13
+        },
+    ]
+}
