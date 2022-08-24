@@ -27,7 +27,7 @@
         {
             "class": "label_control",
             "color": "#ffffff",
-            "font.size": 11
+            "font.size": 13
         },
 
         // ============================================================
@@ -191,7 +191,7 @@
             "layer0.inner_margin": 0,
             "layer0.tint": "#4b4b4b",
             "layer0.opacity": 1,
-            "layer1.inner_margin": [0, 1],
+            "layer1.inner_margin": 0,
             "layer1.texture": "GNOME Dark/assets/tabs/tabset_bg.png",
             "layer1.tint": "#242424",
             "layer1.opacity": 1,
@@ -460,7 +460,7 @@
         },
         {
             "class": "auto_complete_label",
-            "font.size": 11,
+            "font.size": 13,
             // unselected text color
             "fg": "#ffffff",
             "match_fg": "#ffffff",
